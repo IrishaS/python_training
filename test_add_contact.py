@@ -18,7 +18,7 @@ class test_add_contact(unittest.TestCase):
         wd = self.wd
         self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
-        self.create_contact(wd, firstname="Irina", lastname="Silkina", company="MTS", address="SPb", mobile="+9874561", email="mts@mail.ru", year="2010")
+        self.create_contact(wd, firstname="Irina", lastname="Silkina", company="MTS", address="SPb", mobile="+111111", email="mts@mail.ru", year="2010")
         self.logout(wd)
 
     def logout(self, wd):
