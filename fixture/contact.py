@@ -41,3 +41,17 @@ class ContactHelper:
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys(contact.address2)
         wd.find_element_by_name("submit").click()
+
+    def delete_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
+        # select first group
+        wd.find_element_by_name("selected[]").click()
+        # submit delection
+        #wd.find_element_by_name("delete").click()
+
+        #if not wd.find_element_by_id("39").is_selected():
+            #wd.find_element_by_id("39").click()
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
+        #self.return_to_groups_page()
