@@ -15,7 +15,7 @@ class test_add_contact_new1(unittest.TestCase):
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
     
-    def test_test_add_contact_new1(self):
+    def test_test_add_contact_new1(self, day="//div[@id='content']/form/select[1]//option[10]"):
         success = True
         wd = self.wd
         wd.get("http://localhost/addressbook/")
@@ -41,11 +41,17 @@ class test_add_contact_new1(unittest.TestCase):
         wd.find_element_by_name("address").send_keys("SPb")
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys("+7999777555511")
+        wd.find_element_by_name("mobile").send_keys("+7000777555511")
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
         wd.find_element_by_name("email").send_keys("sil@mail.ru")
-        if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[10]").is_selected():
+        wd.find_element_by_name("bday").click()
+        wd.find_element_by_name("bday").clear()
+        wd.find_element_by_name("bday").send_keys("5")
+        wd.find_element_by_name("bmonth").click()
+        wd.find_element_by_name("bmonth").clear()
+        wd.find_element_by_name("bmonth").send_keys("May")
+        if not wd.find_element_by_xpath(day).is_selected():
             wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[10]").click()
         if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[10]").is_selected():
             wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[10]").click()

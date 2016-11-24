@@ -18,15 +18,15 @@ class test_add_contact(unittest.TestCase):
         wd = self.wd
         self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
-        self.create_contact(wd, firstname="Irina", lastname="Silkina", company="MTS", address="SPb", mobile="+111111", email="mts@mail.ru", year="2010")
+        self.create_contact(wd, firstname="Irina", lastname="Silkina", company="MTS", address="SPb", mobile="+55555", email="mts@mail.ru", year="2010")
         self.logout(wd)
 
     def logout(self, wd):
          wd.find_element_by_link_text("Logout").click()
 
     def create_contact(self, wd, firstname, lastname, company, address, mobile, email, year,
-                       day="//div[@id='content']/form/select[1]//option[10]",
-                       month="//div[@id='content']/form/select[2]//option[4]"):
+                       day="//div[@id='content']/form/select[1]//option[15]",
+                       month="//div[@id='content']/form/select[2]//option[6]"):
 
         # init contact creation
         wd.find_element_by_link_text("add new").click()
