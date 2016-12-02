@@ -4,7 +4,7 @@ class Contact:
                  mobile = None, email = None,
                  #day,
                        #month,
-                 year = None, address2 = None):
+                 year = None, address2 = None,id = None):
         self.firstname = firstname
         self.lastname = lastname
         self.company = company
@@ -16,3 +16,4 @@ class Contact:
         #self.month = int(month) + 1
         self.year = year
         self.address2 = address2
+        self.id = id

@@ -12,10 +12,11 @@ from model.contact import Contact
     #return fixture
 
 def test_test_add_contact_new2(app):
-    #app.session.login(username="admin", password="secret")
+    old_contacts = app.contact.get_contact_list()
     app.contact.create(Contact(firstname="Irisha1", lastname="Silkina", company="Tele2", address="SPb", homephone="1452367",
                                mobile="+79814442233", email="Tele2@mail.ru",
                                #day="7", month="6",
                                year="1980", address2="Moscou"))
-    #app.session.logout()
+    new_contacts = app.contact.get_contact_list()
+    assert len(old_contacts) + 1 == len(new_contacts)
 
