@@ -50,7 +50,7 @@ class ContactHelper:
 
 
 
-    def delete_contact(self):
+    def delete_first_contact(self):
         wd = self.app.wd
         self.open_contact_page()
         self.select_first_contact()
@@ -77,15 +77,28 @@ class ContactHelper:
         self.open_contact_page()
         return len(wd.find_elements_by_name("selected[]"))
 
+#   def get_contact_list(self):
+#        wd = self.app.wd
+#        self.open_contact_page()
+#        contacts = []
+#        for element in wd.find_elements_by_css_selector("td.center"):
+#            firstname = element.find_element_by_name("selected[]").get_attribute("firstname")
+#            lastname = element.find_element_by_name("selected[]").get_attribute("lastname")
+#            id = element.find_element_by_name("selected[]").get_attribute("value")
+#            contacts.append(Contact(firstname=firstname,lastname=lastname, id=id))
+#        return contacts
+
+
     def get_contact_list(self):
         wd = self.app.wd
         self.open_contact_page()
         contacts = []
-        for element in wd.find_elements_by_css_selector("td.center"):
-            #text = element.text
-            element.find_element_by_name("selected[]").get_attribute("title")
-            id = element.find_element_by_name("selected[]").get_attribute("value")
-            contacts.append(Contact(firstname=text, id=id))
+        for element in wd.find_elements_by_css_selector("tr"):
+            name = element.get_attribute("name")
+            if name =='entry':
+                lastname = element.find_elements_by_tag_name("td")[1].text
+                firstname = element.find_elements_by_tag_name("td")[2].text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                contacts.append(Contact(firstname=firstname, lastname=lastname, id=id))
         return contacts
-
 

@@ -13,10 +13,12 @@ from model.contact import Contact
 
 def test_test_add_contact_new2(app):
     old_contacts = app.contact.get_contact_list()
-    app.contact.create(Contact(firstname="Irisha1", lastname="Silkina", company="Tele2", address="SPb", homephone="1452367",
+    contact = Contact (firstname="Irisha1", lastname="Silkina", company="Tele2", address="SPb", homephone="1452367",
                                mobile="+79814442233", email="Tele2@mail.ru",
                                #day="7", month="6",
-                               year="1980", address2="Moscou"))
+                              year="1980", address2="Moscou")
+    app.contact.create(contact)
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) + 1 == len(new_contacts)
-
+    old_contacts.append(contact)
+    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
