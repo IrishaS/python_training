@@ -3,12 +3,10 @@
 
 #from fixture.application import Application
 from model.contact import Contact
-import pytest
-import random
-import string
 
-@pytest.mark.parametrize("contact", testdata, ids=[repr(x) for x in testdata])
-def test_test_add_contact_new2(app,contact):
+#@pytest.mark.parametrize("contact", testdata, ids=[repr(x) for x in testdata])
+def test_test_add_contact_new2(app,json_contacts):
+    contact = json_contacts
     old_contacts = app.contact.get_contact_list()
 #    contact = Contact (firstname="Irisha1", lastname="Silkina", company="Tele2", address="SPb", homephone="1452367",
 #                               mobilephone="+79814442233", email="Tele2@mail.ru",
